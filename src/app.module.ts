@@ -4,8 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AiModule } from './ai/ai.module';
+import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
+import { EntitlementsModule } from './entitlements/entitlements.module';
 import { HealthModule } from './health/health.module';
+import { ReadingsModule } from './readings/readings.module';
 
 @Module({
   imports: [
@@ -30,6 +33,9 @@ import { HealthModule } from './health/health.module';
     HealthModule,
     CommonModule,
     AiModule,
+    AuthModule,
+    EntitlementsModule,
+    ReadingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
