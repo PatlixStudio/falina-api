@@ -1,10 +1,11 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiPropertyOptional, ApiTags } from '@nestjs/swagger';
+import type { EntitlementsView } from '@falina/shared';
 import { IsOptional, IsString, MaxLength } from 'class-validator';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { UsersService } from '../users/users.service';
-import { EntitlementsService, EntitlementsView } from './entitlements.service';
+import { EntitlementsService } from './entitlements.service';
 
 class UpgradeDto {
   @ApiPropertyOptional({ example: 'falina_premium_monthly' })

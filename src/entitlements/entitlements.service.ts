@@ -7,7 +7,6 @@ import {
   type EntitlementCode,
   type EntitlementsView,
   type ReadingType,
-  type SubscriptionTier,
   type TypeUsage,
   type UsageSnapshot,
 } from '@falina/shared';
