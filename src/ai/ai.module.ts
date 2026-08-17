@@ -16,21 +16,19 @@ import { NvidiaAiProvider } from './providers/nvidia-ai.provider';
 @Module({
   providers: [
     MockAiProvider,
-    NvidiaAiProvider,
     {
       provide: AI_PROVIDER_TOKEN,
-      inject: [ConfigService, MockAiProvider, NvidiaAiProvider],
+      inject: [ConfigService, MockAiProvider],
       useFactory: (
         config: ConfigService,
         mock: MockAiProvider,
-        nvidia: NvidiaAiProvider,
       ): AiProvider => {
         const name = config.get<string>('AI_PROVIDER', 'mock').toLowerCase();
         if (name === 'mock') {
           return mock;
         }
         if (name === 'nvidia') {
-          return nvidia;
+          return new NvidiaAiProvider(config);
         }
         throw new Error(
           `AI_PROVIDER '${name}' is not wired yet. Available providers: mock, nvidia.`,
