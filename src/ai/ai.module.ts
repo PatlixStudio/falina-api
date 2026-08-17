@@ -19,10 +19,7 @@ import { NvidiaAiProvider } from './providers/nvidia-ai.provider';
     {
       provide: AI_PROVIDER_TOKEN,
       inject: [ConfigService, MockAiProvider],
-      useFactory: (
-        config: ConfigService,
-        mock: MockAiProvider,
-      ): AiProvider => {
+      useFactory: (config: ConfigService, mock: MockAiProvider): AiProvider => {
         const name = config.get<string>('AI_PROVIDER', 'mock').toLowerCase();
         if (name === 'mock') {
           return mock;
